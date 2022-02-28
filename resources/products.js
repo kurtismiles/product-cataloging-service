@@ -161,12 +161,14 @@ const validateProduct = (product) => {
       throw new error;
     }
 
-    // check if tags are at least 1 character in length
-    product.tags.forEach((tag) => {
-      if (tag.length < 1) {
-        throw new error;
-      }
-    });
+    // check if tags are at least 1 character in length, allows empty array for no tags
+    if (product.tags != []) {
+      product.tags.forEach((tag) => {
+        if (tag.length < 1) {
+          throw new error;
+        }
+      });
+    }
 
     return true;
 
